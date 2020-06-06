@@ -38,7 +38,7 @@ jobs:
       - run: ls -la
       - name: Decrypt File
         run: |
-          gpg --quiet --batch --yes --decrypt --passphrase="$PASS" \ 
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASS" \
           --output $HOME/secrets.json secrets.json.gpg
         env:
           PASS: ${{secrets.PASS}}
