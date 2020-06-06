@@ -1,6 +1,11 @@
 name: Testing Actions Workflow
 on: 
-  - push
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [assigned, opened, reopened]
+
 
 jobs:
   run-github-actions:
