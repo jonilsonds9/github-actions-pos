@@ -1,9 +1,7 @@
 name: ENV Variables
 on: push
-
 env:
-  WF_ENV: disponível para todos os jobs
-
+  WF_ENV: ${{secrets.WF_ENV}}
 jobs:
   log-env-job:
     runs-on: ubuntu-18.04
