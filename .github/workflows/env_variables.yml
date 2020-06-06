@@ -1,0 +1,34 @@
+name: ENV Variables
+on: push
+
+env:
+  WF_ENV: disponível para todos os jobs
+
+jobs:
+  log-env-job:
+    runs-on: ubuntu-18.04
+    env:
+      JOB_ENV: disponível para todos OS steps
+    steps:
+      - name: log Env Variables
+        env:
+          STEP_ENV: disponível somente para esse step
+        run: |
+          echo "WF_ENV: ${{WF_ENV}}"
+          echo "JOB_ENV: ${{JOB_ENV}}"
+          echo "STEP_ENV: ${{STEP_ENV}}"
+
+      - name: log Env 2
+        run: |
+          echo "WF_ENV: ${{WF_ENV}}"
+          echo "JOB_ENV: ${{JOB_ENV}}"
+          echo "STEP_ENV: ${{STEP_ENV}}"
+
+  log-default-job:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: log Env Variables
+        run: |
+          echo "WF_ENV: ${{WF_ENV}}"
+          echo "JOB_ENV: ${{JOB_ENV}}"
+          echo "STEP_ENV: ${{STEP_ENV}}"
