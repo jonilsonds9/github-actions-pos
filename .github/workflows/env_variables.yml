@@ -32,7 +32,7 @@ jobs:
           echo "STEP_ENV: ${STEP_ENV}"
   
   decrypt:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Decrypt File
@@ -41,3 +41,4 @@ jobs:
           --output $HOME/secrets.json secrets.json.gpg
         env:
           PASS: ${{secrets.PASS}}
+      - run: cat $HOME/secrets.json
